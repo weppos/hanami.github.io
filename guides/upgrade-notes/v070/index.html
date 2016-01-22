@@ -8,7 +8,7 @@
     <meta name="author" content="Luca Guidi">
     <link href="http://feeds.feedburner.com/hanamirb" rel="alternate" title="Hanami" type="application/atom+xml" />
 
-    <title>Hanami | Guides - Mailers Delivery</title>
+    <title>Hanami | Guides - Upgrade Notes for v0.7.0</title>
 
     <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
     <link href="/stylesheets/toolkit-minimal.css" rel="stylesheet" type="text/css" />
@@ -52,7 +52,7 @@
     <div class="container docs-content">
       <ul id="markdown-toc">
         <li></li>
-        <li><span class="icon icon-pencil" id="edit-guides-article" title="Edit this article"><a href="https://github.com/hanami/hanami.github.io/edit/build/source/guides/mailers/delivery.md" target="_blank"></a></span></li>
+        <li><span class="icon icon-pencil" id="edit-guides-article" title="Edit this article"><a href="https://github.com/hanami/hanami.github.io/edit/build/source/guides/upgrade-notes/v070.md" target="_blank"></a></span></li>
 
         <li class="toc-group">
           <span>Introduction</span>
@@ -198,132 +198,18 @@
         </li>
       </ul>
 
-      <h1>Delivery</h1>
-
-<h2>Multipart Delivery</h2>
-
-<p>By default a mailer delivers a multipart email, that has a HTML and a text part.
-This is the reason why the generator creates two templates.</p>
-
-<p>To render both the templates and deliver them as a multipart message, we simply do:</p>
-<pre class="language-ruby ruby"><code><span class="no">Mailers</span><span class="o">::</span><span class="no">Welcome</span><span class="p">.</span><span class="nf">deliver</span>
-</code></pre>
-
-<p>Hanami mailers are flexible enough to adapt to several scenarios.</p>
-
-<h2>Single Part Delivery</h2>
-
-<p>Let&rsquo;s say in our application users can opt for HTML or textual emails.
-According to this configuration, we want to selectively send only the wanted format:</p>
-<pre class="language-ruby ruby"><code><span class="no">Mailers</span><span class="o">::</span><span class="no">Welcome</span><span class="p">.</span><span class="nf">deliver</span><span class="p">(</span><span class="ss">format: :html</span><span class="p">)</span>
-<span class="c1"># or</span>
-<span class="no">Mailers</span><span class="o">::</span><span class="no">Welcome</span><span class="p">.</span><span class="nf">deliver</span><span class="p">(</span><span class="ss">format: :txt</span><span class="p">)</span>
-</code></pre>
-
-<p>By using only one format, it will render and deliver only the specified template.</p>
-
-<h2>Remove Templates</h2>
-
-<p>If in our application, we want only to deliver HTML templates, we can <strong>safely</strong> remove textual templates (<code>.txt</code> extension) and every time we will do <code>Mailers::Welcome.deliver</code> it will only send the HTML message.</p>
-
-<p>The same principle applies if we want only to send textual emails, just remove HTML templates (<code>.html</code> extension).</p>
-
-<p class="warning">
-  At the delivery time, a mailer MUST have at least one template available.
-</p>
-
-<h2>Configuration</h2>
-
-<p>In order to specify the gateway to use for our email messages, we can use <code>delivery</code> configuration.</p>
-
-<h3>Built-in Methods</h3>
-
-<p>It accepts a symbol that is translated into a delivery strategy:</p>
+      <h2>Upgrade Notes for v0.7.0</h2>
 
 <ul>
-<li>Exim (<code>:exim</code>)</li>
-<li>Sendmail (<code>:sendmail</code>)</li>
-<li>SMTP (<code>:smtp</code>, for local SMTP installations)</li>
-<li>SMTP Connection (<code>:smtp_connection</code>, via <code>Net::SMTP</code> - for remote SMTP installations)</li>
-<li>Test (<code>:test</code>, for testing purposes)</li>
+<li><p>Rename all the gems in your <code>Gemfile</code> from <code>lotus</code> to <code>hanami</code></p></li>
+<li><p>Rename <code>.lotusrc</code> into <code>.hanamirc</code></p></li>
+<li><p>Find and replace in project: <code>lotus</code> =&gt; <code>hanami</code></p></li>
+<li><p>Find and replace in project: <code>Lotus</code> =&gt; <code>Hanami</code></p></li>
+<li><p>Find and replace in project: <code>LOTUS</code> =&gt; <code>HANAMI</code></p></li>
+<li><p>Rename the environment variable on your server from <code>LOTUS_ENV</code> to <code>HANAMI_ENV</code></p></li>
 </ul>
 
-<p>It defaults to SMTP (<code>:smtp</code>) for production environment, while <code>:test</code> is automatically set for development and test.</p>
-
-<p>The second optional argument is a set of arbitrary configurations that we want to pass to the configuration:</p>
-<pre class="language-ruby ruby"><code><span class="c1"># lib/bookshelf.rb</span>
-<span class="c1"># ...</span>
-<span class="no">Hanami</span><span class="o">::</span><span class="no">Mailer</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span>
-  <span class="c1"># ...</span>
-  <span class="n">delivery</span> <span class="k">do</span>
-    <span class="n">development</span> <span class="ss">:test</span>
-    <span class="nb">test</span>        <span class="ss">:test</span>
-    <span class="n">production</span>  <span class="ss">:smtp</span><span class="p">,</span>
-      <span class="ss">address:              </span><span class="s2">"smtp.gmail.com"</span><span class="p">,</span>
-      <span class="ss">port:                 </span><span class="mi">587</span><span class="p">,</span>
-      <span class="ss">domain:               </span><span class="s2">"bookshelf.org"</span><span class="p">,</span>
-      <span class="ss">user_name:            </span><span class="no">ENV</span><span class="p">[</span><span class="s1">'SMTP_USERNAME'</span><span class="p">],</span>
-      <span class="ss">password:             </span><span class="no">ENV</span><span class="p">[</span><span class="s1">'SMTP_PASSWORD'</span><span class="p">],</span>
-      <span class="ss">authentication:       </span><span class="s2">"plain"</span><span class="p">,</span>
-      <span class="ss">enable_starttls_auto: </span><span class="kp">true</span>
-  <span class="k">end</span>
-<span class="k">end</span><span class="p">.</span><span class="nf">load!</span>
-</code></pre>
-
-<p>For advanced configurations, please have a look at <code>mail</code> <a href="https://github.com/mikel/mail">gem</a> by Mikel Lindsaar.
-At the low level, <strong>Hanami::Mailer</strong> uses this rock solid library.</p>
-
-<p>Because Hanami uses <code>mail</code> gem, which is a <em>de facto</em> standard for Ruby, we can have interoperability with all the most common gateways vendors.
-<a href="https://devcenter.heroku.com/articles/sendgrid#ruby-rails">Sendgrid</a>, <a href="https://devcenter.heroku.com/articles/mandrill#sending-with-smtp">Mandrill</a>, <a href="https://devcenter.heroku.com/articles/postmark#sending-emails-via-the-postmark-smtp-interface">Postmark</a> and <a href="https://devcenter.heroku.com/articles/mailgun#sending-emails-via-smtp">Mailgun</a> just to name a few, use SMTP and have detailed setup guides.</p>
-
-<h3>Custom Methods</h3>
-
-<p>If we need to a custom delivery workflow, we can pass a class to the configuration.</p>
-
-<p>Here&rsquo;s an example on how to use <a href="https://mandrillapp.com/api/docs/">Mandrill API</a> to deliver emails.</p>
-<pre class="language-ruby ruby"><code><span class="c1"># lib/bookshelf.rb</span>
-<span class="c1"># ...</span>
-<span class="nb">require</span> <span class="s1">'lib/mailers/mandrill_delivery_method'</span>
-
-<span class="no">Hanami</span><span class="o">::</span><span class="no">Mailer</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span>
-  <span class="c1"># ...</span>
-  <span class="n">delivery</span> <span class="k">do</span>
-    <span class="n">production</span> <span class="no">MandrillDeliveryMethod</span>
-      <span class="ss">api_key: </span><span class="no">ENV</span><span class="p">[</span><span class="s1">'MANDRILL_API_KEY'</span><span class="p">]</span>
-  <span class="k">end</span>
-<span class="k">end</span><span class="p">.</span><span class="nf">load!</span>
-</code></pre>
-
-<p>The object MUST respond to <code>#initialize(options = {})</code> and to <code>#deliver!(mail)</code>, where <code>mail</code> is an instance of <a href="https://github.com/mikel/mail/blob/master/lib/mail/mail.rb"><code>Mail::Message</code></a>.</p>
-<pre class="language-ruby ruby"><code><span class="k">class</span> <span class="nc">MandrillDeliveryMethod</span>
-  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
-    <span class="vi">@api_key</span> <span class="o">=</span> <span class="n">options</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:api_key</span><span class="p">)</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">deliver!</span><span class="p">(</span><span class="n">mail</span><span class="p">)</span>
-    <span class="nb">send</span> <span class="n">convert</span><span class="p">(</span><span class="n">mail</span><span class="p">)</span>
-  <span class="k">end</span>
-
-  <span class="kp">private</span>
-
-  <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">raw_message</span><span class="p">)</span>
-    <span class="n">gateway</span><span class="p">.</span><span class="nf">messages</span><span class="p">.</span><span class="nf">send</span> <span class="n">message</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">mail</span><span class="p">)</span>
-    <span class="c1"># Convert a Mail::Message instance into a Hash structure</span>
-    <span class="c1"># See https://mandrillapp.com/api/docs/messages.ruby.html</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">gateway</span>
-    <span class="no">Mandrill</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="vi">@api_key</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-
-<p class="notice">
-  Please notice that this is only an example that illustrates custom policies. If you want to use Mandrill, please prefer SMTP over this strategy.
-</p>
+<p><strong>If you have any problem, don&rsquo;t hesitate to look for help in <a href="http://chat.hanamirb.org">chat</a>.</strong></p>
 
     </div>
 

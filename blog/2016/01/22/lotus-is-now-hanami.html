@@ -8,27 +8,27 @@
     <meta name="author" content="Luca Guidi">
     <link href="http://feeds.feedburner.com/hanamirb" rel="alternate" title="Hanami" type="application/atom+xml" />
 
-    <title>Hanami | Announcing Lotus v0.4.1</title>
+    <title>Hanami | Lotus is now Hanami</title>
 
     <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
     <link href="/stylesheets/toolkit-minimal.css" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/application-minimal.css" rel="stylesheet" type="text/css" />
 
     <meta property="og:site_name"   content="Hanami"/>
-    <meta property="og:title"       content="Announcing Lotus v0.4.1">
-    <meta property="og:url"         content="http://hanamirb.org/blog/2015/07/10/announcing-lotus-041.html">
-    <meta property="og:description" content="Lotus patch release: Fix container routes, Rack middleware sessions and CLI commands.
+    <meta property="og:title"       content="Lotus is now Hanami">
+    <meta property="og:url"         content="http://hanamirb.org/blog/2016/01/22/lotus-is-now-hanami.html">
+    <meta property="og:description" content="Lotus is now Hanami
 ">
-    <meta property="og:image"       content="http://hanamirb.org/blog/2015/07/10/announcing-lotus-041/cover.jpg">
+    <meta property="og:image"       content="http://hanamirb.org/blog/2016/01/22/lotus-is-now-hanami/cover.jpg">
 
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:site"        content="@hanamirb">
     <meta name="twitter:creator"     content="@hanamirb">
-    <meta name="twitter:url"         content="http://hanamirb.org/blog/2015/07/10/announcing-lotus-041.html">
-    <meta name="twitter:title"       content="Announcing Lotus v0.4.1">
-    <meta name="twitter:description" content="Lotus patch release: Fix container routes, Rack middleware sessions and CLI commands.
+    <meta name="twitter:url"         content="http://hanamirb.org/blog/2016/01/22/lotus-is-now-hanami.html">
+    <meta name="twitter:title"       content="Lotus is now Hanami">
+    <meta name="twitter:description" content="Lotus is now Hanami
 ">
-    <meta name="twitter:image:src"   content="http://hanamirb.org/blog/2015/07/10/announcing-lotus-041/cover.jpg">
+    <meta name="twitter:image:src"   content="http://hanamirb.org/blog/2016/01/22/lotus-is-now-hanami/cover.jpg">
   </head>
 
   <body>
@@ -67,8 +67,8 @@
     <div class="container">
       <div class="block block-inverse text-center">
         <div class="block-foreground">
-          <h1 class="block-title">Announcing Lotus v0.4.1</h1>
-          <h4 class="text-muted">Posted by <strong>Luca Guidi</strong> on <em>July 10, 2015</em></h4>
+          <h1 class="block-title">Lotus is now Hanami</h1>
+          <h4 class="text-muted">Posted by <strong>Luca Guidi</strong> on <em>January 22, 2016</em></h4>
           <button class="btn btn-default btn-outline m-t">
             <span class="icon icon-facebook"></span>
             Share
@@ -79,14 +79,14 @@
           </button>
         </div>
         <div class="block-background">
-          <img src="/blog/2015/07/10/announcing-lotus-041/cover.jpg">
+          <img src="/blog/2016/01/22/lotus-is-now-hanami/cover.jpg">
         </div>
       </div>
 
       <div class="container container-article">
         <div class="row">
           <div class="col-xs-12 col-md-8 col-md-offset-1">
-            <p class="lead">Lotus patch release: Fix container routes, Rack middleware sessions and CLI commands.
+            <p class="lead">Lotus is now Hanami
 </p>
           </div>
         </div>
@@ -94,52 +94,71 @@
         <div class="row">
           <div class="col-xs-12 col-md-9 col-md-offset-1">
             <div class="article-body">
-              <h2>Fixes</h2>
+              <h2>Lotus</h2>
 
-<p>This patch release ships only with bug fixes.
-Thanks to all our contributors who have reported and fixed issues.</p>
+<p>More than three years ago I started hacking with this tiny web framework.
+Naming is hard, as you know, and the choice felt on something that has a deep meaning for me: <strong>Lotus</strong>.</p>
 
-<h3>Container Architecture Routes</h3>
+<h3>The Origins</h3>
 
-<p><a href="https://github.com/theocodes">Thiago Felippe</a> and <a href="https://github.com/AlfonsoUceda">Alfonso Uceda</a> fixed duplicated route segments for applications mounted in <a href="/guides/architectures/container">Lotus Container</a>.</p>
+<p>I was aware of the famous IBM&rsquo;s office suite, but I thought it was something belonging to the past and would have never expected Lotus (my Lotus) to become known in Ruby ecosystem.
+Now, this name collision has caused minor confusion outside of Ruby Community.
+HackerNews or <a href="https://www.thoughtworks.com/radar/languages-and-frameworks/lotus">ThoughtWork&rsquo;s Radar</a> are clear examples.
+There always been the need to specify Lotus for Ruby.</p>
 
-<p>The following configuration was generating the <code>/admin</code> prefix twice:  <code>/admin/admin/dashboard</code> instead of <code>/admin/dashboard</code>.</p>
-<pre class="language-ruby ruby"><code><span class="no">Lotus</span><span class="o">::</span><span class="no">Container</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span>
-  <span class="n">mount</span> <span class="no">Admin</span><span class="o">::</span><span class="no">Application</span><span class="p">,</span> <span class="ss">at: </span><span class="sb">`/admin`</span>
-<span class="k">end</span>
-</code></pre>
+<h3>The Problem</h3>
 
-<h3>Database Creation for PostgreSQL</h3>
+<p>It wasn&rsquo;t a huge problem until a few weeks ago.
+We received <a href="https://github.com/hanami/hanami/issues/445">an issue on GitHub</a> from an IBM employee, who informally made us to notice about the fact that they hold the trademark in software industry for Lotus.
+That was the first warning that I could&rsquo;ve been sued in the future by them.</p>
 
-<p><a href="https://github.com/nickcoyne">Nick Coyne</a> fixed database creation for PostgreSQL.
-It now uses <code>createdb</code> when we do <code>lotus db create</code>.</p>
+<h3>The Decision</h3>
 
-<h3>Explicit Partial Search</h3>
+<p>In the subsequent two weeks, I&rsquo;ve talked with our Community, with a lawyer and the decision is to change the name.</p>
 
-<p><a href="http://github.com/farrel">Farrel Lifson</a> suggested a patch to force explicit partial finding in case of name clash.</p>
+<p>I want to clarify that I never received a letter by IBM, it&rsquo;s only a strategic choice.
+First of all, the word &ldquo;Lotus&rdquo; is too much popular and it always been hard for me to track online discussions.</p>
 
-<h3>Apps In Console</h3>
+<p>Secondly, sharing the same name will always be source of confusion for developers.
+Better to find a new name: <strong>Hanami</strong>.</p>
 
-<p><a href="https://github.com/AlfonsoUceda">Alfonso Uceda</a> fixed application loading in <code>lotus console</code></p>
+<h2>Hanami</h2>
 
-<h3>Session Secret</h3>
+<p>Hanami is a japanese tradition of watching the cherry trees to blossom during spring.
+During this season, they celebrate this event all together in their beautiful gardens.</p>
 
-<p><a href="https://github.com/AlfonsoUceda">Alfonso Uceda</a> fixed generator for <a href="/guides/architectures/application">application arch</a> to generate session secret</p>
+<p>This choice remarks a continuity with the past of the project and it also puts a strong emphasis on <strong>the importance that our Community has for us</strong>.</p>
 
-<h3>Generators</h3>
+<p><strong>This is also a tribute to Matz and Ruby origins.</strong></p>
 
-<p><a href="https://github.com/AlfonsoUceda">Alfonso Uceda</a>, <a href="https://github.com/joneslee85">Trung Lê</a>, <a href="https://github.com/hieuk09">Hiếu Nguyễn</a> and <a href="https://github.com/mvader">Miguel Molina</a> fixed application and model generators when database name is mispelled or entity name is missing, respectively.</p>
+<h3>New Website</h3>
 
-<h3>Session Middleware</h3>
+<p>The new website is <a href="http://hanamirb.org">http://hanamirb.org</a>, and you can find us on Twitter as <a href="https://twitter.com/hanamirb">@hanamirb</a> (<a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=hanamirb">#hanamirb</a>).
+We moved the source code at <a href="https://github.com/hanami">https://github.com/hanami</a>.</p>
 
-<p>I fixed Rack middleware in order to makes sessions available to other Rack components.</p>
+<p>The main Ruby gem is now <a href="https://rubygems.org/gems/hanami"><code>hanami</code></a>.</p>
 
-<h2>Roadmap For v0.5.0</h2>
+<h3>Gem Releases</h3>
 
-<p>A few days ago, we have <a href="http://bit.ly/lotusrb-roadmap-v050">published the roadmap for v0.5.0</a>, which is scheduled for <strong>Sep 23, 2015</strong>.
-It includes <strong>websockets</strong>, <strong>assets</strong>, <strong>mailers</strong>, <strong>associations</strong> and experimental features.
-Please join the discussion and let us to hear your opinion.
-Thank you!</p>
+<p>In order to reflect this reorganization, we release today all the gems under the new name.
+We bumped the minor version because this is a breaking change.</p>
+
+<ul>
+<li><code>hanami-0.7.0</code> (equivalent to <code>lotusrb-0.6.1</code>)</li>
+<li><code>hanami-utils-0.7.0</code> (equivalent to <code>lotus-utils-0.6.1</code>)</li>
+<li><code>hanami-validations-0.5.0</code> (equivalent to <code>lotus-validations-0.4.0</code>)</li>
+<li><code>hanami-router-0.6.0</code> (equivalent to <code>lotus-router-0.5.1</code>)</li>
+<li><code>hanami-helpers-0.3.0</code> (equivalent to <code>lotus-helpers-0.2.6</code>)</li>
+<li><code>hanami-model-0.6.0</code> (equivalent to <code>lotus-model-0.5.2</code>)</li>
+<li><code>hanami-view-0.6.0</code> (equivalent to <code>lotus-view-0.5.0</code>)</li>
+<li><code>hanami-controller-0.6.0</code> (equivalent to <code>lotus-controller-0.5.1</code>)</li>
+<li><code>hanami-assets-0.2.0</code> (equivalent to <code>lotus-assets-0.1.0</code>)</li>
+<li><code>hanami-mailer-0.2.0</code> (equivalent to <code>lotus-mailer-0.1.0</code>)</li>
+</ul>
+
+<h3>Upgrade Notes</h3>
+
+<p>Please read the <a href="/guides/upgrade-notes/v070">upgrade notes for v0.7.0</a> in our Guides.</p>
 
             </div>
 
@@ -149,19 +168,19 @@ Thank you!</p>
              <span class="icon icon-github"></span>
              Star
            </a>
-           <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhanamirb.org%2Fblog%2F2015%2F07%2F10%2Fannouncing-lotus-041.html" title="Like on Facebook" class="btn btn-default-outline" target="_blank">
+           <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhanamirb.org%2Fblog%2F2016%2F01%2F22%2Flotus-is-now-hanami.html" title="Like on Facebook" class="btn btn-default-outline" target="_blank">
              <span class="icon icon-thumbs-up"></span>
              Like
            </a>
-           <a href="https://twitter.com/home?status=Announcing+Lotus+v0.4.1+-+http%3A%2F%2Fhanamirb.org%2Fblog%2F2015%2F07%2F10%2Fannouncing-lotus-041.html+%2Fvia+%40hanamirb+%23hanamirb" title="Share on Twitter" target="_blank" class="btn btn-default-outline">
+           <a href="https://twitter.com/home?status=Lotus+is+now+Hanami+-+http%3A%2F%2Fhanamirb.org%2Fblog%2F2016%2F01%2F22%2Flotus-is-now-hanami.html+%2Fvia+%40hanamirb+%23hanamirb" title="Share on Twitter" target="_blank" class="btn btn-default-outline">
              <span class="icon icon-twitter"></span>
              Tweet
            </a>
-           <a href="https://news.ycombinator.com/submitlink?u=http%3A%2F%2Fhanamirb.org%2Fblog%2F2015%2F07%2F10%2Fannouncing-lotus-041.html&t=Announcing Lotus v0.4.1" class="btn btn-default-outline" title="Vote on HackerNews">
+           <a href="https://news.ycombinator.com/submitlink?u=http%3A%2F%2Fhanamirb.org%2Fblog%2F2016%2F01%2F22%2Flotus-is-now-hanami.html&t=Lotus is now Hanami" class="btn btn-default-outline" title="Vote on HackerNews">
              <span class="icon"><strong>HN</strong></span>
              Vote
            </a>
-            <a href="http://www.reddit.com/submit?url=http%3A%2F%2Fhanamirb.org%2Fblog%2F2015%2F07%2F10%2Fannouncing-lotus-041.html" target="_blank" title="Share on Reddit" class="btn btn-default-outline">
+            <a href="http://www.reddit.com/submit?url=http%3A%2F%2Fhanamirb.org%2Fblog%2F2016%2F01%2F22%2Flotus-is-now-hanami.html" target="_blank" title="Share on Reddit" class="btn btn-default-outline">
              <span class="icon"><strong>R</strong></span>
              Share
             </a>

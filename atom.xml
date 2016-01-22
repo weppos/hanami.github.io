@@ -4,13 +4,92 @@
    <subtitle>Hanami web framework blog</subtitle>
    <link href="http://hanamirb.org/atom.xml" rel="self"/>
    <link href="http://hanamirb.org/blog"/>
-   <updated>2016-01-19T09:48:00+01:00</updated>
+   <updated>2016-01-22T15:54:00+01:00</updated>
    <id>http://hanamirb.org/blog</id>
    <author>
      <name>Hanami</name>
      <email>admin@hanamirb.org</email>
    </author>
 
+     <entry>
+       <title>Lotus is now Hanami</title>
+       <id>http://hanamirb.ororg/blog/2016/01/22/lotus-is-now-hanami.html</id>
+       <link rel="alternate" href="http://hanamirb.org/blog/2016/01/22/lotus-is-now-hanami.html"/>
+       <updated>2016-01-22T15:54:00+01:00</updated>
+       <author>
+         <name>Luca Guidi</name>
+       </author>
+       <summary>
+         Lotus is now Hanami
+
+       </summary>
+       <content type="html"><![CDATA[<h2>Lotus</h2>
+
+<p>More than three years ago I started hacking with this tiny web framework.
+Naming is hard, as you know, and the choice felt on something that has a deep meaning for me: <strong>Lotus</strong>.</p>
+
+<h3>The Origins</h3>
+
+<p>I was aware of the famous IBM&rsquo;s office suite, but I thought it was something belonging to the past and would have never expected Lotus (my Lotus) to become known in Ruby ecosystem.
+Now, this name collision has caused minor confusion outside of Ruby Community.
+HackerNews or <a href="https://www.thoughtworks.com/radar/languages-and-frameworks/lotus">ThoughtWork&rsquo;s Radar</a> are clear examples.
+There always been the need to specify Lotus for Ruby.</p>
+
+<h3>The Problem</h3>
+
+<p>It wasn&rsquo;t a huge problem until a few weeks ago.
+We received <a href="https://github.com/hanami/hanami/issues/445">an issue on GitHub</a> from an IBM employee, who informally made us to notice about the fact that they hold the trademark in software industry for Lotus.
+That was the first warning that I could&rsquo;ve been sued in the future by them.</p>
+
+<h3>The Decision</h3>
+
+<p>In the subsequent two weeks, I&rsquo;ve talked with our Community, with a lawyer and the decision is to change the name.</p>
+
+<p>I want to clarify that I never received a letter by IBM, it&rsquo;s only a strategic choice.
+First of all, the word &ldquo;Lotus&rdquo; is too much popular and it always been hard for me to track online discussions.</p>
+
+<p>Secondly, sharing the same name will always be source of confusion for developers.
+Better to find a new name: <strong>Hanami</strong>.</p>
+
+<h2>Hanami</h2>
+
+<p>Hanami is a japanese tradition of watching the cherry trees to blossom during spring.
+During this season, they celebrate this event all together in their beautiful gardens.</p>
+
+<p>This choice remarks a continuity with the past of the project and it also puts a strong emphasis on <strong>the importance that our Community has for us</strong>.</p>
+
+<p><strong>This is also a tribute to Matz and Ruby origins.</strong></p>
+
+<h3>New Website</h3>
+
+<p>The new website is <a href="http://hanamirb.org">http://hanamirb.org</a>, and you can find us on Twitter as <a href="https://twitter.com/hanamirb">@hanamirb</a> (<a href="https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=hanamirb">#hanamirb</a>).
+We moved the source code at <a href="https://github.com/hanami">https://github.com/hanami</a>.</p>
+
+<p>The main Ruby gem is now <a href="https://rubygems.org/gems/hanami"><code>hanami</code></a>.</p>
+
+<h3>Gem Releases</h3>
+
+<p>In order to reflect this reorganization, we release today all the gems under the new name.
+We bumped the minor version because this is a breaking change.</p>
+
+<ul>
+<li><code>hanami-0.7.0</code> (equivalent to <code>lotusrb-0.6.1</code>)</li>
+<li><code>hanami-utils-0.7.0</code> (equivalent to <code>lotus-utils-0.6.1</code>)</li>
+<li><code>hanami-validations-0.5.0</code> (equivalent to <code>lotus-validations-0.4.0</code>)</li>
+<li><code>hanami-router-0.6.0</code> (equivalent to <code>lotus-router-0.5.1</code>)</li>
+<li><code>hanami-helpers-0.3.0</code> (equivalent to <code>lotus-helpers-0.2.6</code>)</li>
+<li><code>hanami-model-0.6.0</code> (equivalent to <code>lotus-model-0.5.2</code>)</li>
+<li><code>hanami-view-0.6.0</code> (equivalent to <code>lotus-view-0.5.0</code>)</li>
+<li><code>hanami-controller-0.6.0</code> (equivalent to <code>lotus-controller-0.5.1</code>)</li>
+<li><code>hanami-assets-0.2.0</code> (equivalent to <code>lotus-assets-0.1.0</code>)</li>
+<li><code>hanami-mailer-0.2.0</code> (equivalent to <code>lotus-mailer-0.1.0</code>)</li>
+</ul>
+
+<h3>Upgrade Notes</h3>
+
+<p>Please read the <a href="/guides/upgrade-notes/v070">upgrade notes for v0.7.0</a> in our Guides.</p>
+]]></content>
+     </entry>
      <entry>
        <title>Announcing Lotus v0.6.1</title>
        <id>http://hanamirb.ororg/blog/2016/01/19/announcing-lotus-061.html</id>
@@ -1035,147 +1114,6 @@ We wrote a new extensive <a href="/guides">section</a> in our website to explain
 We&rsquo;ll continue to deliver value and new features starting from tomorrow.</p>
 
 <p><a href="/guides/getting-started">Happy hacking</a>.</p>
-]]></content>
-     </entry>
-     <entry>
-       <title>Introducing Database Migrations</title>
-       <id>http://hanamirb.ororg/blog/2015/06/17/introducing-database-migrations.html</id>
-       <link rel="alternate" href="http://hanamirb.org/blog/2015/06/17/introducing-database-migrations.html"/>
-       <updated>2015-06-17T16:34:00+02:00</updated>
-       <author>
-         <name>Luca Guidi</name>
-       </author>
-       <summary>
-         New feature for the upcoming v0.4.0: database migrations. Fast operations for schema: create, drop, migrate and prepare database. Keep migrations healthy with experimental feature.
-
-       </summary>
-       <content type="html"><![CDATA[<h2>Introduction</h2>
-
-<p>Lotus v0.4.0 (Jun 23) will ship a really useful feature: database migrations.</p>
-
-<p>It&rsquo;s a really fast way to manage database schema via Ruby.
-For a detailed explanation of the feature, please have a look at the related <a href="https://github.com/lotus/model/pull/196">pull</a> <a href="https://github.com/lotus/lotus/pull/256">requests</a>.</p>
-
-<h2>Command Line</h2>
-
-<p>Here&rsquo;s new CLI facilities to control database schema.</p>
-<pre class="language-ruby shell"><code><span class="gp">% </span>lotus new bookshelf --database<span class="o">=</span>postgres <span class="o">&amp;&amp;</span> <span class="nb">cd </span>bookshelf <span class="o">&amp;&amp;</span> bundle
-<span class="gp">% </span>lotus db
-Commands:
-  lotus db apply           <span class="c"># migrate, dump schema, delete migrations (experimental)</span>
-  lotus db console         <span class="c"># start DB console</span>
-  lotus db create          <span class="c"># create database for current environment</span>
-  lotus db drop            <span class="c"># drop database for current environment</span>
-  lotus db <span class="nb">help</span> <span class="o">[</span>COMMAND]  <span class="c"># Describe subcommands or one specific subcommand</span>
-  lotus db migrate         <span class="c"># migrate database for current environment</span>
-  lotus db prepare         <span class="c"># create and migrate database</span>
-  lotus db version         <span class="c"># current database version</span>
-</code></pre>
-
-<p>These commands modify the database for the current environnment.
-There are some <strong>safety mechanisms</strong>, for instance <code>db drop</code> will raise an error if ran in production mode.</p>
-
-<h3>Migration Generator</h3>
-
-<p>This upcoming version will ship with a migration generator.</p>
-<pre class="language-ruby shell"><code><span class="gp">% </span>lotus generate migration create_books
-    create  db/migrations/20150617145519_create_books.rb
-</code></pre>
-
-<p>Let&rsquo;s edit it:</p>
-<pre class="language-ruby ruby"><code><span class="no">Lotus</span><span class="o">::</span><span class="no">Model</span><span class="p">.</span><span class="nf">migration</span> <span class="k">do</span>
-  <span class="n">change</span> <span class="k">do</span>
-    <span class="n">create_table</span> <span class="ss">:books</span> <span class="k">do</span>
-      <span class="n">primary_key</span> <span class="ss">:id</span>
-      <span class="n">foreign_key</span> <span class="ss">:author_id</span><span class="p">,</span> <span class="ss">:authors</span><span class="p">,</span> <span class="ss">on_delete: :cascade</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
-
-      <span class="n">column</span> <span class="ss">:code</span><span class="p">,</span>  <span class="no">String</span><span class="p">,</span>  <span class="ss">null: </span><span class="kp">false</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">size: </span><span class="mi">128</span>
-      <span class="n">column</span> <span class="ss">:title</span><span class="p">,</span> <span class="no">String</span><span class="p">,</span>  <span class="ss">null: </span><span class="kp">false</span>
-      <span class="n">column</span> <span class="ss">:price</span><span class="p">,</span> <span class="no">Integer</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span><span class="p">,</span> <span class="ss">default: </span><span class="mi">100</span> <span class="c1"># cents</span>
-
-      <span class="n">check</span> <span class="p">{</span> <span class="n">price</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">}</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre>
-
-<p>We use a <code>create_table</code> block to define the schema of that table.</p>
-
-<p>The first line is <code>primary_key :id</code>, which is a shortcut to create an autoincrement integer column.</p>
-
-<p>There is a foreign key definition with cascade deletion.
-The first argument is the name of the local column (<code>books.author_id</code>), while the second is the referenced table.</p>
-
-<p>Then we have three lines for columns.
-The first argument that we pass to <code>#column</code> is the name, then the type.
-The type can be a <strong>Ruby type</strong> such as <code>String</code> or <code>Integer</code> or a string that represent the <strong>native database type</strong> (eg. <code>&quot;varchar(32)&quot;</code> or <code>&quot;text[]&quot;</code>).</p>
-
-<p>As a last optional argument there is a Hash that specify some extra details for the column. For instance NULL or uniqueness constraints, the size (for strings) or the default value.</p>
-
-<p>The final line defines a database <strong>check</strong> to ensure that price will always be greater than zero.</p>
-
-<h3>Migrate</h3>
-
-<p>As first thing we need to create the database and then we can modify the schema.</p>
-<pre class="language-ruby shell"><code><span class="gp">% </span>lotus db create
-<span class="gp">% </span>lotus db migrate
-</code></pre>
-
-<p>When we run <code>db migrate</code>, it applies all the pending migrations under <code>db/migrations</code>.
-Our <code>books</code> table is now created. We can ask our application what&rsquo;s the current schema version.</p>
-<pre class="language-ruby shell"><code><span class="gp">% </span>lotus db version
-20150617145519
-</code></pre>
-
-<p>In case we want to target a specific database version, we can pass it as extra argument to <code>db migrate</code>.
-This is useful if we want to partially migrate the database, or rollback some changes.</p>
-
-<p>For instance, if we recognize an error in our just created migration, we can do:</p>
-<pre class="language-ruby shell"><code><span class="gp">% </span>lotus db migrate 0 <span class="c"># get back to the initial version</span>
-<span class="gp">% </span>vim db/migrations/20150617145519_create_books.rb
-<span class="gp">% </span>lotus db migrate <span class="c"># run all the pending migrations again</span>
-</code></pre>
-
-<h3>Prepare</h3>
-
-<p>We&rsquo;re fan of system automation, for this reason we have added a new command to get our database ready for development, tests or CI: <code>db prepare</code>.</p>
-
-<p>It performs the following operations:</p>
-
-<ul>
-<li>Creates database</li>
-<li>Load schema structure, if present (see next section, <em>Apply</em>).</li>
-<li>Runs pending migrations</li>
-</ul>
-
-<p>If used with <code>db apply</code> it&rsquo;s <strong>really fast</strong> and it should be the <strong>preferred way</strong> to setup databases.</p>
-
-<h3>Apply</h3>
-
-<p>When an application is developed for years, it accumulates dozens or hundreds of migrations.
-This slows down database operations for development and tests (CI).</p>
-
-<p>We have introduced an <strong>experimental feature</strong>: <code>db apply</code>.
-By running this command, it:</p>
-
-<ul>
-<li>Runs pending migrations</li>
-<li>Dumps schema informations into <code>db/schema.sql</code></li>
-<li>Deletes all the migrations from <code>db/migrations</code></li>
-</ul>
-<pre class="language-ruby shell"><code><span class="gp">% </span>lotus db apply
-<span class="gp">% </span>tree db/migrations
-
-0 directories, 0 files
-</code></pre>
-
-<h2>Release Date</h2>
-
-<p>Database migrations will be available with <code>lotusrb-0.4.0</code>, expected for <strong>June 23, 2015</strong>.</p>
-
-<div style="display: inline">
-  <iframe src="https://ghbtns.com/github-btn.html?user=lotus&repo=lotus&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-</div>
 ]]></content>
      </entry>
 </feed>
